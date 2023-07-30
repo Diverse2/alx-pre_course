@@ -1,0 +1,11 @@
+#!/bin/bash
+
+current_branch=$(git symbolic-ref HEAD)
+disallowed_branch="branch_name_to_prevent_pushing"
+
+if [[ "$current_branch" == "refs/heads/$disallowed_branch" ]]; then
+    echo "Pushing $disallowed_branch is not allowed!"
+    exit 1
+fi
+
+exit 0
